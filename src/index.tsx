@@ -5,10 +5,12 @@ import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+const apiUrl: string = process.env.REACT_APP_MAINNET_INFURA || '';
+
 const config: Config = {
   readOnlyChainId: Mainnet.chainId,
   readOnlyUrls: {
-    [Mainnet.chainId]: '',
+    [Mainnet.chainId]: apiUrl,
   },
 }
 
