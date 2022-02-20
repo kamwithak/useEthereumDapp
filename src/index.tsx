@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Mainnet, DAppProvider, Config } from '@usedapp/core'
+import { ChakraProvider } from '@chakra-ui/react';
 import App from './App';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
 
 const apiUrl: string = process.env.REACT_APP_MAINNET_INFURA || '';
 
@@ -17,7 +18,9 @@ const config: Config = {
 ReactDOM.render(
   <React.StrictMode>
     <DAppProvider config={config}>
-      <App />
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
     </DAppProvider>
   </React.StrictMode>,
   document.getElementById('root')
