@@ -6,7 +6,6 @@ import { Box } from '@chakra-ui/react'
 
 // Components
 import { WalletDapp } from './components/WalletDapp';
-import { Home } from './components/Home';
 
 // useDapp
 import { useEthers } from '@usedapp/core'
@@ -17,10 +16,7 @@ import './App.css';
 const App = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const isDarkMode = colorMode === 'dark';
-  const { activateBrowserWallet, account } = useEthers();
-  if (account) {
-    return <WalletDapp account={account}/>;
-  }
+  const { activateBrowserWallet, account, deactivate } = useEthers();
   return (
     <Container
       maxW='container.xl'
@@ -42,17 +38,35 @@ const App = () => {
       </Flex>
       <Flex justify="center">
         <Box>
-          <Heading size='3xl' style={{'fontStyle': 'italic'}}>cryptowallet.xyz</Heading>
+          {
+            account ? (
+              <WalletDapp account={account}/>
+            ) : (
+              <Heading size='3xl' style={{'fontStyle': 'italic'}}>what's in my wallet?</Heading>
+            )
+          }
         </Box>
       </Flex>
       <Flex
         justify='right'
         style={{'paddingBottom': '15px'}}>
-        <Button
-          colorScheme='pink'
-          borderRadius='12px'
-          onClick={() => activateBrowserWallet()}
-        >Connect</Button>
+        {
+          account ? (
+            <Button
+              colorScheme='pink'
+              borderRadius='12px'
+              onClick={() => deactivate()}>
+              Disconnect
+            </Button>
+          ) : (
+            <Button
+              colorScheme='pink'
+              borderRadius='12px'
+              onClick={() => activateBrowserWallet()}>
+              Connect
+            </Button>
+          )
+        }
       </Flex>
     </Container>
   )
