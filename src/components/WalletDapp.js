@@ -20,7 +20,7 @@ export const WalletDapp = ({account}) => {
       <Container>
         <Badge colorScheme={'pink'} fontSize='20px' marginBottom={'10px'}>{account}</Badge>
         <Table variant='simple'>
-          <TableCaption>Your current balances for the connect wallet address</TableCaption>
+          <TableCaption>Your current balances for the connected wallet address</TableCaption>
           <Thead>
             <Tr>
               <Th>Symbol</Th>
