@@ -4,8 +4,7 @@ import {
     useColorMode,
     Button,
     IconButton,
-    Switch,
-    Icon
+    Switch
   } from "@chakra-ui/react";
   
   import { SunIcon, MoonIcon } from "@chakra-ui/icons";
